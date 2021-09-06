@@ -1,10 +1,9 @@
 import React from "react";
 import Cards from "./Cards";
 import SearchBar from "./SearchBar";
-import { CardData } from "../Api/Data";
 
-const SideBar = () => {
 
+const SideBar = ({ data }) => {
 
   return (
     <div className="flex max-h-screen">
@@ -140,9 +139,9 @@ const SideBar = () => {
           <SearchBar />{" "}
         </div>
         <div className="grid grid-cols-3 m-6 overflow-y-scroll">
-          {CardData.map((item) => {
-              return <Cards data={item} />;
-            })}
+          {data.map((item) => {
+            return <Cards data={item} />;
+          })}
         </div>
       </div>
     </div>
