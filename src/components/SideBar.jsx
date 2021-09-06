@@ -1,10 +1,14 @@
-import React from 'react'
-import Cards from './Cards';
+import React from "react";
+import Cards from "./Cards";
+import SearchBar from "./SearchBar";
+import { CardData } from "../Api/Data";
 
-const SideBar =  () => {
-    return (
-        <div className="flex max-h-screen">
-      <nav className="flex flex-col bg-purple-900 w-64 h-screen px-4 tex-gray-900 border border-purple-900">
+const SideBar = () => {
+
+
+  return (
+    <div className="flex max-h-screen">
+      <div className="flex flex-col bg-purple-900 w-64 h-screen px-4 tex-gray-900 border border-purple-900">
         <div className="flex flex-wrap mt-8">
           <div className="w-1/2">
             <img
@@ -56,7 +60,6 @@ const SideBar =  () => {
                 </svg>
               </span>
               <a href="#">
-               
                 <span className="ml-2">Customers</span>
               </a>
             </li>
@@ -71,7 +74,6 @@ const SideBar =  () => {
                 </svg>
               </span>
               <a href="#">
-               
                 <span className="ml-2">Milestones</span>
               </a>
             </li>
@@ -131,25 +133,20 @@ const SideBar =  () => {
             </li>
           </ul>
         </div>
-        </nav>
-        <div className="grid grid-cols-3 gap-4 overflow-y-scroll">
-          <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />           
-        <Cards />
+      </div>
+      <div className="flex flex-col">
+        <div className="mr-auto ml-auto my-3">
+          {" "}
+          <SearchBar />{" "}
         </div>
-
+        <div className="grid grid-cols-3 m-6 overflow-y-scroll">
+          {CardData.map((item) => {
+              return <Cards data={item} />;
+            })}
+        </div>
+      </div>
     </div>
-     )
-}
- 
-export default SideBar;
+  );
+};
 
+export default SideBar;
